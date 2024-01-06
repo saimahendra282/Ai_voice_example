@@ -58,19 +58,25 @@ def execute_command(command): # to open websites
          current_time = get_current_time()
          print("The current time is :",current_time)
          speak(f"The current time is {current_time}")
+     elif "open youtube video about" in command:
+         query = command.replace("open youtube video about", "").strip()
+         kit.playonyt(query)
      elif "who coded you" in command:
         txt="I AM CODE BY SAI MAHENDRA BEJAWADA WHO IS STUDYING AT KL UNIVERSITY I AM VERY GRATEFULL TO HIM"
         speak(txt)
         print(txt)
     elif "search in google " in command: # command to search in google
         query = command.replace("search in google", "").strip()
-        google_search(query)
+        kit.search(query)
     elif "message" in command: # to send messege to whatsapp contact
         send_whatsapp_message()
     elif "flipkart" in command: # to search in flipkart
         query = command.replace("flipkart", "").strip()
-        flipkart_search(query)
-        elif "close" in command:
+        flipkart_search(query) 
+    elif "give summary on topic" in command: # gives a summary about topic from wikepedia 
+         query = command.replace("give summary on topic","").strip()
+         kit.info(query, lines=3) # gives 3 lines summary from wikepedia
+    elif "close" in command:
         print("Closing.....")
         speak("as you wish sir, exiting the code.")
         exit()  # Stop execution
@@ -97,13 +103,6 @@ def flipkart_search(query):
     except Exception as e:
         speak(f"Error performing Flipkart search: {e}")
 
-def google_search(query):
-    speak(f"Searching Google for {query}.")
-    try:
-        search_url = f"https://www.google.com/search?q={query}"
-        webbrowser.open(search_url, new=2)
-    except Exception as e:
-        speak(f"Error performing Google search: {e}")
 
 def main():
     greet()
