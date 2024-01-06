@@ -6,6 +6,12 @@
 # pyttsx3
 # speech_recognition
 #code begins...................................................
+import speech_recognition as sr
+import webbrowser,subprocess
+import pyttsx3,datetime
+import os
+import cv2
+import pywhatkit as kit
 #this function greets you when code started
 def greet():
     print("Intiating.....")
